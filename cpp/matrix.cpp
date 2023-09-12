@@ -11,6 +11,7 @@ Matrix::Matrix(int rows,int cols)
         memset(this->matrix[i], 0, this->cols * sizeof(int));
     }
 }
+
 Matrix::Matrix(int rows, int cols, int **matrix)
 {
     this->rows = rows;
@@ -22,6 +23,7 @@ Matrix::Matrix(int rows, int cols, int **matrix)
         memcpy(this->matrix[i], matrix[i], this->cols * sizeof(int));
     }
 }
+
 Matrix::Matrix(const Matrix &other)
 {
     this->rows = rows;
@@ -33,6 +35,7 @@ Matrix::Matrix(const Matrix &other)
         memcpy(this->matrix[i], matrix[i], this->cols * sizeof(int));
     }
 }
+
 Matrix::Matrix(Matrix &&other)
 {
     this->rows = other.rows;
@@ -40,11 +43,13 @@ Matrix::Matrix(Matrix &&other)
     this->matrix = other.matrix;
     other.matrix = nullptr;
 }
+
 Matrix::~Matrix()
 {
     free(this->matrix);
     std::cout << "Destroy Matrix" << std::endl;
 }
+
 Matrix Matrix::operator=(const Matrix &other)
 {
     this->rows = rows;
@@ -57,6 +62,7 @@ Matrix Matrix::operator=(const Matrix &other)
     }
     return *this;
 }
+
 Matrix Matrix::operator=(Matrix &&other)
 {
     this->rows = other.rows;
@@ -65,6 +71,7 @@ Matrix Matrix::operator=(Matrix &&other)
     other.matrix = nullptr;
     return *this;
 }
+
 Matrix Matrix::operator+(const Matrix &other)
 {
     Matrix result(this->rows, this->cols);
@@ -73,6 +80,7 @@ Matrix Matrix::operator+(const Matrix &other)
             result.matrix[i][j] = this->matrix[i][j] + other.matrix[i][j];
     return result;
 }
+
 Matrix Matrix::operator-(const Matrix &other)
 {
     Matrix result(this->rows, this->cols);
@@ -81,6 +89,7 @@ Matrix Matrix::operator-(const Matrix &other)
             result.matrix[i][j] = this->matrix[i][j] - other.matrix[i][j];
     return result;
 }
+
 Matrix Matrix::operator*(Matrix& other)
 {
     Matrix result(this->rows, other.cols);
@@ -93,6 +102,7 @@ Matrix Matrix::operator*(Matrix& other)
         }
     return result;
 }
+
 bool Matrix::operator==(const Matrix &other)
 {
     if (this->rows != other.rows || this->cols != other.cols)
@@ -103,6 +113,7 @@ bool Matrix::operator==(const Matrix &other)
                 return false;
     return true;
 }
+
 std::istream &operator>>(std::istream &in, Matrix &matrix)
 {
     for (int i = 0;i<matrix.rows;i++)
@@ -110,6 +121,7 @@ std::istream &operator>>(std::istream &in, Matrix &matrix)
             in >> matrix.matrix[i][j];
     return in;
 }
+
 std::ostream &operator<<(std::ostream &os, const Matrix &matrix)
 {
     for (int i = 0;i<matrix.rows;i++)
