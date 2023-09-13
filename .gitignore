@@ -3,4 +3,5 @@
 
 build/
 venv/
+devel/
 *.bak
