@@ -5,4 +5,3 @@ else
     sudo btrfs subvolume snapshot / /.snapshot/`date +"%Y-%m-%d"`
     echo "创建完成."
 fi
-# echo $directory
