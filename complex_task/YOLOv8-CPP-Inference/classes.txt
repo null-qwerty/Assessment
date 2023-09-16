@@ -1,0 +1,6 @@
+blue
+unactivated_blue
+activated_blue
+red
+unactivated_red
+activated_red

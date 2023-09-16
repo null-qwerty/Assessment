@@ -4,4 +4,7 @@
 build/
 venv/
 devel/
+datasets/
+runs/
+*.MP4
 *.bak
